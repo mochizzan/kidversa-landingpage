@@ -13,7 +13,7 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Kidversa - Home</title>
+        <title>Kidversa</title>
       </Head>
       <Flex vertical align="center">
         <Navbar />
