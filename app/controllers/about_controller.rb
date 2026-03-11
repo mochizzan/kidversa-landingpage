@@ -67,7 +67,7 @@ class AboutController < ApplicationController
           },
           {
             nama: "Anindia Agusta Ken Nadila",
-            jabatan: "Secretaryt",
+            jabatan: "Secretary",
             profile: "anin.png"
           }
         ]
