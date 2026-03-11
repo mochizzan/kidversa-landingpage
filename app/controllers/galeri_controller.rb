@@ -23,8 +23,9 @@ class GaleriController < ApplicationController
       }
     ]
 
+
     gallery_url = image_files.map do |file|
-      { title: file[:title], url: ActionController::Base.helpers.image_path(file[:src]) }
+      { title: file[:title], url: helpers.image_path(file[:src]) }
     end
 
     render inertia: {

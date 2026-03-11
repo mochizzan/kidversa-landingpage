@@ -1,5 +1,6 @@
 import { Flex } from "antd";
 import { Navbar } from "../../components/navbar";
+import { FooterSection2 } from "../../layouts/footer_section_2";
 
 const TEXT_SECONDARY = "#556678";
 const WA_GREEN = "#25D366";
@@ -113,25 +114,7 @@ function Contact() {
         </Flex>
       </main>
 
-      <footer
-        style={{
-          width: "100%",
-          padding: "20px 24px",
-          marginTop: "auto",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            margin: 0,
-            fontSize: 12,
-            color: "#94a3b8",
-            fontFamily: "'Quicksand', sans-serif",
-          }}
-        >
-          © 2026 Kidversa. All rights reserved.
-        </p>
-      </footer>
+      <FooterSection2/>
     </Flex>
   );
 }

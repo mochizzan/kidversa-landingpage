@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/images/nino_ngintip.png";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const url = usePage()
+
+  const routeActive = (route) => url.url === route
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +64,7 @@ export function Navbar() {
         <li>
           <Link
             style={{
-              color: "inherit",
+              color: routeActive("/") ? "ActiveText" : "inherit",
               textDecoration: "none",
               fontSize: 14,
               fontWeight: 600,
@@ -76,7 +79,7 @@ export function Navbar() {
         <li>
           <Link
             style={{
-              color: "inherit",
+              color: routeActive("/about") ? "ActiveText" : "inherit",
               textDecoration: "none",
               fontSize: 14,
               fontWeight: 600,
@@ -110,7 +113,7 @@ export function Navbar() {
         <li>
           <Link
             style={{
-              color: "inherit",
+              color: routeActive("/contact") ? "ActiveText" : "inherit",
               textDecoration: "none",
               fontSize: 14,
               fontWeight: 600,
@@ -125,7 +128,7 @@ export function Navbar() {
         <li>
           <Link
             style={{
-              color: "inherit",
+              color: routeActive("/galeri") ? "ActiveText" : "inherit",
               textDecoration: "none",
               fontSize: 14,
               fontWeight: 600,

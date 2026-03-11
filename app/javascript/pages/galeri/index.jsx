@@ -1,5 +1,7 @@
 import { Flex, Image } from "antd";
 import { Navbar } from "../../components/navbar";
+import { isMobile } from "react-device-detect";
+import { FooterSection2 } from "../../layouts/footer_section_2";
 
 const TEXT_PRIMARY = "#1a2332";
 const ACCENT = "#4096ff";
@@ -16,6 +18,7 @@ function GalleryItem({ img }) {
         position: "relative",
         cursor: "pointer",
         transition: "transform 0.3s ease",
+        width: isMobile ? "40%" : "30%",
       }}
     >
       <Image
@@ -136,40 +139,22 @@ function Galeri({ gallery_url }) {
         </h1>
 
         <Image.PreviewGroup items={previewItems}>
-          <div
-            className="gallery-masonry"
+          <Flex
+            wrap
+            justify="center"
             style={{
-              columnCount: 3,
-              columnGap: 16,
               width: "100%",
+              gap: 16,
             }}
           >
             {gallery_url.map((img, i) => (
               <GalleryItem key={`${i}-${img.title}`} img={img} />
             ))}
-          </div>
+          </Flex>
         </Image.PreviewGroup>
       </main>
 
-      <footer
-        style={{
-          width: "100%",
-          padding: "20px 24px",
-          marginTop: "auto",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            margin: 0,
-            fontSize: 12,
-            color: "#94a3b8",
-            fontFamily: "'Quicksand', sans-serif",
-          }}
-        >
-          © 2026 Kidversa. All rights reserved.
-        </p>
-      </footer>
+      <FooterSection2 />
 
       <style>{`
         .gallery-item:hover {

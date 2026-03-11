@@ -1,19 +1,89 @@
-import { Flex } from "antd";
+import { Card, Flex, Space, Divider, Typography, Row, Col, Tag } from "antd";
 import { Navbar } from "../../components/navbar";
+import { useState } from "react";
+import {
+  SafetyOutlined,
+  TeamOutlined,
+  GlobalOutlined,
+  BookOutlined,
+  RocketOutlined,
+  CheckCircleFilled,
+} from "@ant-design/icons";
+import { Meta } from "antd/es/list/Item";
+import { FooterSection2 } from "../../layouts/footer_section_2";
+
+const { Title, Text, Paragraph } = Typography;
 
 const ACCENT = "#4096ff";
 const TEXT_PRIMARY = "#1a2332";
 const TEXT_SECONDARY = "#556678";
 
 const DataMisi = [
-  "Mengembangkan platform edukasi kebencanaan yang interaktif, menarik, dan mudah digunakan oleh anak usia dini.",
-  "Membantu guru, sekolah, dan institusi pendidikan dalam menyampaikan materi mitigasi bencana secara efektif dan menyenangkan.",
-  "Mengintegrasikan pembelajaran dan evaluasi dalam satu sistem digital yang mendukung proses belajar yang aktif.",
-  "Menumbuhkan kesadaran dan kesiapsiagaan bencana pada anak melalui pendekatan bermain dan teknologi.",
-  "Memperluas akses edukasi kebencanaan dengan bekerja sama dengan sekolah dan berbagai institusi pendidikan.",
+  {
+    text: "Mengembangkan platform edukasi kebencanaan yang interaktif, menarik, dan mudah digunakan oleh anak usia dini.",
+    icon: <RocketOutlined />,
+  },
+  {
+    text: "Membantu guru, sekolah, dan institusi pendidikan dalam menyampaikan materi mitigasi bencana secara efektif dan menyenangkan.",
+    icon: <BookOutlined />,
+  },
+  {
+    text: "Mengintegrasikan pembelajaran dan evaluasi dalam satu sistem digital yang mendukung proses belajar yang aktif.",
+    icon: <CheckCircleFilled />,
+  },
+  {
+    text: "Menumbuhkan kesadaran dan kesiapsiagaan bencana pada anak melalui pendekatan bermain dan teknologi.",
+    icon: <SafetyOutlined />,
+  },
+  {
+    text: "Memperluas akses edukasi kebencanaan dengan bekerja sama dengan sekolah dan berbagai institusi pendidikan.",
+    icon: <GlobalOutlined />,
+  },
 ];
 
-function About() {
+function ProfileCard({ anggota }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Card
+      hoverable
+      styles={{
+        body: { padding: 0 },
+      }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: 200,
+        height: 250,
+        background: `url(${anggota.image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        justifyContent: "flex-end",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <Meta
+        title={anggota.nama}
+        description={anggota.jabatan}
+        style={{
+          color: "#fff",
+          background:
+            "linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)",
+          padding: 24,
+          backdropFilter: hovered ? "blur(3px)" : "blur(1px)",
+          borderRadius: hovered ? 8 : "0 0 8px 8px",
+          transition: "0.2s ease",
+          height: hovered ? 240 : 100,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      />
+    </Card>
+  );
+}
+
+function About({ data_image_team }) {
   return (
     <Flex
       vertical
@@ -26,7 +96,6 @@ function About() {
         overflow: "hidden",
       }}
     >
-      {/* Decorative blobs */}
       <div
         style={{
           position: "absolute",
@@ -53,223 +122,265 @@ function About() {
           pointerEvents: "none",
         }}
       />
+
       <Navbar />
 
       <main
         style={{
           width: "100%",
-          maxWidth: 900,
+          maxWidth: 1200,
           margin: "0 auto",
           padding: "120px 24px 80px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 48,
         }}
       >
-        <h1
-          style={{
-            margin: 0,
-            fontSize: "clamp(28px, 5vw, 40px)",
-            fontWeight: 800,
-            color: TEXT_PRIMARY,
-            textAlign: "center",
-            fontFamily: "'Quicksand', sans-serif",
-            letterSpacing: "-0.02em",
-          }}
+        <Space
+          direction="vertical"
+          align="center"
+          size="small"
+          style={{ width: "100%", marginBottom: 64 }}
         >
-          Tentang <span style={{ color: ACCENT }}>Kidversa</span>
-        </h1>
-
-        <div
-          style={{
-            width: "100%",
-            padding: "40px 36px",
-            borderRadius: 20,
-            background: "#ffffff",
-            border: "1px solid #e8ecf2",
-            boxShadow: "0 4px 24px rgba(0, 0, 0, 0.05)",
-            textAlign: "center",
-            transition: "transform 0.3s ease, box-shadow 0.3s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-4px)";
-            e.currentTarget.style.boxShadow = "0 12px 36px rgba(0, 0, 0, 0.1)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "0 4px 24px rgba(0, 0, 0, 0.05)";
-          }}
-        >
-          <h2
+          <Title
+            level={1}
             style={{
-              margin: "0 0 6px",
-              fontSize: 13,
-              fontWeight: 700,
-              color: ACCENT,
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              fontFamily: "'Quicksand', sans-serif",
-            }}
-          >
-            Visi
-          </h2>
-          <h3
-            style={{
-              margin: "0 0 16px",
-              fontSize: 22,
+              margin: 0,
+              fontSize: "clamp(32px, 5vw, 48px)",
               fontWeight: 800,
               color: TEXT_PRIMARY,
-              lineHeight: 1.3,
+              textAlign: "center",
               fontFamily: "'Quicksand', sans-serif",
+              letterSpacing: "-0.02em",
             }}
           >
-            Visi Kidversa
-          </h3>
-
-          <div
+            Tentang <span style={{ color: ACCENT }}>Kidversa</span>
+          </Title>
+          <Paragraph
             style={{
-              width: 40,
-              height: 3,
-              borderRadius: 2,
-              background: ACCENT,
-              margin: "0 auto 20px",
-              opacity: 0.4,
-            }}
-          />
-
-          <p
-            style={{
-              margin: "0 auto",
               maxWidth: 600,
-              fontSize: 16,
-              lineHeight: 1.75,
+              textAlign: "center",
               color: TEXT_SECONDARY,
+              fontSize: 16,
+              marginTop: 16,
               fontFamily: "'Quicksand', sans-serif",
             }}
           >
-            Mewujudkan generasi anak yang sadar dan siap menghadapi bencana
-            melalui pembelajaran interaktif berbasis teknologi sejak usia dini.
-          </p>
-        </div>
+            Platform edukasi kebencanaan interaktif untuk generasi muda
+            Indonesia
+          </Paragraph>
+        </Space>
 
-        <Flex vertical align="center" gap={24} style={{ width: "100%" }}>
-          <Flex vertical align="center" gap={4}>
-            <h2
+        <Row justify="center" style={{ marginBottom: 80 }}>
+          <Col xs={24} lg={20} xl={18}>
+            <Card
+              bordered={false}
               style={{
-                margin: 0,
-                fontSize: 13,
-                fontWeight: 700,
-                color: ACCENT,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                fontFamily: "'Quicksand', sans-serif",
+                borderRadius: 24,
+                background: "#ffffff",
+                boxShadow: "0 4px 24px rgba(0, 0, 0, 0.06)",
+                textAlign: "center",
               }}
+              bodyStyle={{ padding: "48px 40px" }}
             >
-              Misi
-            </h2>
-            <h3
-              style={{
-                margin: 0,
-                fontSize: 22,
-                fontWeight: 800,
-                color: TEXT_PRIMARY,
-                fontFamily: "'Quicksand', sans-serif",
-              }}
-            >
-              Misi Kidversa
-            </h3>
-          </Flex>
+              <Space direction="vertical" size="large" align="center">
+                <div>
+                  <Text
+                    strong
+                    style={{
+                      color: ACCENT,
+                      fontSize: 14,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.15em",
+                      fontFamily: "'Quicksand', sans-serif",
+                    }}
+                  >
+                    Visi Kami
+                  </Text>
+                  <Title
+                    level={2}
+                    style={{
+                      margin: "12px 0 0",
+                      color: TEXT_PRIMARY,
+                      fontFamily: "'Quicksand', sans-serif",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Mewujudkan Generasi Tangguh
+                  </Title>
+                </div>
 
-          <div
-            className="misi-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: 20,
-              width: "100%",
-            }}
-          >
-            {DataMisi.map((text, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: "28px 24px",
-                  borderRadius: 16,
-                  background: "#ffffff",
-                  border: "1px solid #e8ecf2",
-                  boxShadow: "0 2px 16px rgba(0, 0, 0, 0.04)",
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 14,
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-3px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 8px 28px rgba(0, 0, 0, 0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 2px 16px rgba(0, 0, 0, 0.04)";
-                }}
-              >
-                <span
+                <Divider
                   style={{
-                    flexShrink: 0,
-                    width: 32,
-                    height: 32,
-                    borderRadius: 10,
-                    background: ACCENT,
-                    color: "#fff",
-                    fontSize: 14,
-                    fontWeight: 700,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontFamily: "'Quicksand', sans-serif",
-                    marginTop: 1,
+                    margin: "8px 0",
+                    minWidth: 60,
+                    width: 60,
+                    borderColor: ACCENT,
+                    opacity: 0.3,
                   }}
-                >
-                  {i + 1}
-                </span>
-                <p
+                />
+
+                <Paragraph
                   style={{
                     margin: 0,
-                    fontSize: 14,
-                    lineHeight: 1.7,
+                    fontSize: 18,
+                    lineHeight: 1.8,
                     color: TEXT_SECONDARY,
                     fontFamily: "'Quicksand', sans-serif",
+                    maxWidth: 700,
                   }}
                 >
-                  {text}
-                </p>
-              </div>
+                  Mewujudkan generasi anak yang sadar dan siap menghadapi
+                  bencana melalui pembelajaran interaktif berbasis teknologi
+                  sejak usia dini.
+                </Paragraph>
+              </Space>
+            </Card>
+          </Col>
+        </Row>
+
+        <Space
+          direction="vertical"
+          size="large"
+          style={{ width: "100%", marginBottom: 80 }}
+        >
+          <Space
+            direction="vertical"
+            align="center"
+            size="small"
+            style={{ width: "100%" }}
+          >
+            <Text
+              strong
+              style={{
+                color: ACCENT,
+                fontSize: 14,
+                textTransform: "uppercase",
+                letterSpacing: "0.15em",
+                fontFamily: "'Quicksand', sans-serif",
+              }}
+            >
+              Misi Kami
+            </Text>
+            <Title
+              level={2}
+              style={{
+                margin: 0,
+                color: TEXT_PRIMARY,
+                fontFamily: "'Quicksand', sans-serif",
+                fontWeight: 700,
+                textAlign: "center",
+              }}
+            >
+              Langkah-langkah Strategis
+            </Title>
+          </Space>
+
+          <Row gutter={[24, 24]} justify="center">
+            {DataMisi.map((item, index) => (
+              <Col xs={24} sm={12} lg={8} key={index}>
+                <Card
+                  bordered={false}
+                  style={{
+                    height: "100%",
+                    borderRadius: 16,
+                    background: "#ffffff",
+                    boxShadow: "0 2px 12px rgba(0, 0, 0, 0.04)",
+                    transition: "all 0.3s ease",
+                  }}
+                  bodyStyle={{ padding: 28 }}
+                  hoverable
+                >
+                  <Space direction="vertical" size="middle">
+                    <div
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 12,
+                        background: `${ACCENT}15`,
+                        color: ACCENT,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 20,
+                      }}
+                    >
+                      {item.icon}
+                    </div>
+                    <Text
+                      strong
+                      style={{
+                        fontSize: 16,
+                        color: TEXT_PRIMARY,
+                        fontFamily: "'Quicksand', sans-serif",
+                        display: "block",
+                        marginBottom: 8,
+                      }}
+                    >
+                      Misi {index + 1}
+                    </Text>
+                    <Paragraph
+                      style={{
+                        margin: 0,
+                        fontSize: 14,
+                        lineHeight: 1.7,
+                        color: TEXT_SECONDARY,
+                        fontFamily: "'Quicksand', sans-serif",
+                      }}
+                    >
+                      {item.text}
+                    </Paragraph>
+                  </Space>
+                </Card>
+              </Col>
             ))}
-          </div>
-        </Flex>
+          </Row>
+        </Space>
+
+        <Divider style={{ margin: "24px 0", opacity: 0.5 }} />
+
+        <Space direction="vertical" size="large" style={{ width: "100%" }}>
+          <Title
+            level={2}
+            style={{
+              textAlign: "center",
+              margin: 0,
+              color: TEXT_PRIMARY,
+              fontFamily: "'Quicksand', sans-serif",
+              fontWeight: 700,
+            }}
+          >
+            Meet the Team
+          </Title>
+
+          <Space direction="vertical" size={48} style={{ width: "100%" }}>
+            {data_image_team.map((val, i) => (
+              <Space
+                key={`${val.kategori}-${i}`}
+                direction="vertical"
+                align="center"
+                size="large"
+                style={{ width: "100%" }}
+              >
+                <Title
+                  level={4}
+                  style={{
+                    color: TEXT_PRIMARY,
+                    fontFamily: "'Quicksand', sans-serif",
+                    margin: 0,
+                  }}
+                >
+                  {val.kategori}
+                </Title>
+                <Flex wrap="wrap" justify="center" gap={24}>
+                  {val.anggota.map((val2, i2) => (
+                    <ProfileCard key={i2} anggota={val2} />
+                  ))}
+                </Flex>
+              </Space>
+            ))}
+          </Space>
+        </Space>
       </main>
 
-      <footer
-        style={{
-          width: "100%",
-          padding: "20px 24px",
-          marginTop: "auto",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            margin: 0,
-            fontSize: 12,
-            color: "#94a3b8",
-            fontFamily: "'Quicksand', sans-serif",
-          }}
-        >
-          © 2026 Kidversa. All rights reserved.
-        </p>
-      </footer>
+      <FooterSection2 />
     </Flex>
   );
 }
