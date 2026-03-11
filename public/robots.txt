@@ -1,12 +1,40 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+
 User-agent: *
 
+# Allow crawling of the main pages and essential visual/script assets
+# Search engines like Google need JS and CSS to render the page properly for SEO
+Allow: /
+Allow: /assets/
+Allow: /vite/
+
+# Disallow crawling of internal backend paths or irrelevant logs
+# These do not provide value to users and waste crawl budget
 Disallow: /bin/
 Disallow: /log/
 Disallow: /tmp/
 Disallow: /config/
+Disallow: /admin/
+Disallow: /api/
 
-Allow: /assets/
-Allow: /vite/
+# Prevent indexing of common dynamic URL parameters to avoid duplicate content
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Disallow: /*?*search=
 
+# Explicitly allow Google's indexing and rendering bots
+User-agent: Googlebot
+Allow: /
+
+# Allow Google Images bot
+User-agent: Googlebot-Image
+Allow: /
+
+# Allow Google Ads & Analytics bots to ensure campaigns function optimally
+User-agent: Mediapartners-Google
+Allow: /
+User-agent: AdsBot-Google
+Allow: /
+
+# Directs search engines to the comprehensive map of all website pages
 Sitemap: https://www.kidversa.fun/sitemap.xml.gz
