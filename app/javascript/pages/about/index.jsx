@@ -168,8 +168,7 @@ function About({ data_image_team }) {
                 fontFamily: "'Quicksand', sans-serif",
               }}
             >
-              Platform edukasi kebencanaan interaktif untuk generasi muda
-              Indonesia
+              Platform edukasi kebencanaan interaktif untuk Anak usia dini.
             </Paragraph>
           </Space>
 

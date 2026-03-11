@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import logo from "../assets/images/nino_ngintip.png";
 import { Link, usePage } from "@inertiajs/react";
 
+const ACCENT = "#4096ff";
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const url = usePage()
@@ -64,7 +66,7 @@ export function Navbar() {
         <li>
           <Link
             style={{
-              color: routeActive("/") ? "ActiveText" : "inherit",
+              color: routeActive("/") ? ACCENT : "inherit",
               textDecoration: "none",
               fontSize: 14,
               fontWeight: 600,
@@ -79,7 +81,7 @@ export function Navbar() {
         <li>
           <Link
             style={{
-              color: routeActive("/about") ? "ActiveText" : "inherit",
+              color: routeActive("/about") ? ACCENT : "inherit",
               textDecoration: "none",
               fontSize: 14,
               fontWeight: 600,
@@ -113,7 +115,7 @@ export function Navbar() {
         <li>
           <Link
             style={{
-              color: routeActive("/contact") ? "ActiveText" : "inherit",
+              color: routeActive("/contact") ? ACCENT : "inherit",
               textDecoration: "none",
               fontSize: 14,
               fontWeight: 600,
@@ -128,7 +130,7 @@ export function Navbar() {
         <li>
           <Link
             style={{
-              color: routeActive("/galeri") ? "ActiveText" : "inherit",
+              color: routeActive("/galeri") ? ACCENT : "inherit",
               textDecoration: "none",
               fontSize: 14,
               fontWeight: 600,
