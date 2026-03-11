@@ -2,67 +2,73 @@ import { Flex, Image } from "antd";
 import { Navbar } from "../../components/navbar";
 import { isMobile } from "react-device-detect";
 import { FooterSection2 } from "../../layouts/footer_section_2";
+import { Head } from "@inertiajs/react";
 
 const TEXT_PRIMARY = "#1a2332";
 const ACCENT = "#4096ff";
 
 function GalleryItem({ img }) {
   return (
-    <div
-      className="gallery-item"
-      style={{
-        breakInside: "avoid",
-        marginBottom: 16,
-        borderRadius: 14,
-        overflow: "hidden",
-        position: "relative",
-        cursor: "pointer",
-        transition: "transform 0.3s ease",
-        width: isMobile ? "40%" : "30%",
-      }}
-    >
-      <Image
-        src={img.url}
-        alt={img.title}
+    <>
+      <Head>
+        <title>Kidversa - Galeri</title>
+      </Head>
+      <div
+        className="gallery-item"
         style={{
-          display: "block",
-          width: "100%",
-          height: "auto",
+          breakInside: "avoid",
+          marginBottom: 16,
           borderRadius: 14,
-          transition: "transform 0.4s ease",
-          objectFit: "cover",
+          overflow: "hidden",
+          position: "relative",
+          cursor: "pointer",
+          transition: "transform 0.3s ease",
+          width: isMobile ? "40%" : "30%",
         }}
-        preview={{
-          mask: (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                height: "100%",
-                background: "rgba(0, 0, 0, 0.55)",
-                borderRadius: 14,
-                padding: 20,
-              }}
-            >
-              <span
+      >
+        <Image
+          src={img.url}
+          alt={img.title}
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+            borderRadius: 14,
+            transition: "transform 0.4s ease",
+            objectFit: "cover",
+          }}
+          preview={{
+            mask: (
+              <div
                 style={{
-                  color: "#ffffff",
-                  fontSize: 16,
-                  fontWeight: 700,
-                  fontFamily: "'Quicksand', sans-serif",
-                  textAlign: "center",
-                  textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                  height: "100%",
+                  background: "rgba(0, 0, 0, 0.55)",
+                  borderRadius: 14,
+                  padding: 20,
                 }}
               >
-                {img.title}
-              </span>
-            </div>
-          ),
-        }}
-      />
-    </div>
+                <span
+                  style={{
+                    color: "#ffffff",
+                    fontSize: 16,
+                    fontWeight: 700,
+                    fontFamily: "'Quicksand', sans-serif",
+                    textAlign: "center",
+                    textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                  }}
+                >
+                  {img.title}
+                </span>
+              </div>
+            ),
+          }}
+        />
+      </div>
+    </>
   );
 }
 

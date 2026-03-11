@@ -7,19 +7,25 @@ import SistemPenilaianSection from "../../layouts/sistem_penilaian_section";
 import CollaborationSection from "../../layouts/collaboration_section";
 import FooterSection from "../../layouts/footer_section";
 import ProductSection from "../../layouts/product_section";
+import { Head } from "@inertiajs/react";
 
 function Home() {
   return (
-    <Flex vertical align="center">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <WhySection />
-      <ProductSection />
-      <SistemPenilaianSection />
-      <CollaborationSection />
-      <FooterSection />
-    </Flex>
+    <>
+      <Head>
+        <title>Kidversa - Home</title>
+      </Head>
+      <Flex vertical align="center">
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <WhySection />
+        <ProductSection />
+        <SistemPenilaianSection />
+        <CollaborationSection />
+        <FooterSection />
+      </Flex>
+    </>
   );
 }
 
