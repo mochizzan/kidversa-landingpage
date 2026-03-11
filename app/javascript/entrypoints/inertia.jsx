@@ -1,7 +1,7 @@
 import { createInertiaApp } from "@inertiajs/react";
 import { ConfigProvider } from "antd";
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 
 createInertiaApp({
   // Set default page title
@@ -33,15 +33,15 @@ createInertiaApp({
   },
 
   setup({ el, App, props }) {
-    createRoot(el).render(
+    hydrateRoot(
+      el,
       <StrictMode>
         <ConfigProvider
           theme={{ token: { fontFamily: "Quicksand, sans-serif" } }}
         >
-          {" "}
           <App {...props} />
         </ConfigProvider>
-      </StrictMode>,
+      </StrictMode>
     );
   },
 
@@ -66,7 +66,7 @@ createInertiaApp({
     console.error(
       "Missing root element.\n\n" +
         "If you see this error, it probably means you loaded Inertia.js on non-Inertia pages.\n" +
-        'Consider moving <%= vite_javascript_tag "inertia.jsx" %> to the Inertia-specific layout instead.',
+        'Consider moving <%= vite_javascript_tag "inertia.jsx" %> to the Inertia-specific layout instead.'
     );
   }
 });
