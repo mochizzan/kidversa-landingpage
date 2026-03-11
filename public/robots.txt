@@ -1,1 +1,12 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+User-agent: *
+
+Disallow: /bin/
+Disallow: /log/
+Disallow: /tmp/
+Disallow: /config/
+
+Allow: /assets/
+Allow: /vite/
+
+Sitemap: https://www.kidversa.fun/sitemap.xml.gz
